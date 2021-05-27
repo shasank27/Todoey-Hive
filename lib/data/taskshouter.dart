@@ -1,12 +1,9 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'task.dart';
 
 class TaskShouter extends ChangeNotifier {
-  List<Task> tasks = [
-    Task(text: 'Get eggs', isDone: false),
-    Task(text: 'Get bones', isDone: true),
-    Task(text: 'Get milk', isDone: false),
-  ];
+  List<Task> tasks = [];
 
   int get length {
     return tasks.length;

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:todoey_flutter/data/taskshouter.dart';
-import 'package:todoey_flutter/data/task.dart';
 import 'package:provider/provider.dart';
 
 class TaskScreen extends StatelessWidget {
@@ -10,7 +9,6 @@ class TaskScreen extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: 30, right: 30, left: 30),
       decoration: BoxDecoration(
-        color: Colors.white,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
@@ -23,11 +21,21 @@ class TaskScreen extends StatelessWidget {
             'Add Task',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.lightBlueAccent,
+              color: Theme.of(context).disabledColor,
               fontSize: 30.0,
             ),
           ),
           TextField(
+            style: TextStyle(color: Theme.of(context).primaryColor),
+            decoration: InputDecoration(
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Theme.of(context).disabledColor),
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Theme.of(context).disabledColor),
+              ),
+            ),
+            cursorColor: Theme.of(context).disabledColor,
             onChanged: (String value) {
               newTask = value;
             },
@@ -37,9 +45,6 @@ class TaskScreen extends StatelessWidget {
             height: 10,
           ),
           TextButton(
-            style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(Colors.lightBlueAccent)),
             onPressed: () {
               Provider.of<TaskShouter>(context, listen: false).addData(newTask);
               Navigator.pop(context);
