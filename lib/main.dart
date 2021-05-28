@@ -11,15 +11,22 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => TaskShouter(),
-      child: MaterialApp(
-        theme: MyTheme.light,
-        darkTheme: MyTheme.dark,
-        themeMode: ThemeMode.dark,
-        debugShowCheckedModeBanner: false,
-        home: TasksScreen(),
-      ),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => TaskShouter()),
+        ChangeNotifierProvider(
+            create: (context) => ThemeProvider(),
+            builder: (context, _) {
+              final themeProvider = Provider.of<ThemeProvider>(context);
+              return MaterialApp(
+                theme: MyTheme.light,
+                darkTheme: MyTheme.dark,
+                themeMode: themeProvider.themeMode,
+                debugShowCheckedModeBanner: false,
+                home: TasksScreen(),
+              );
+            }),
+      ],
     );
   }
 }

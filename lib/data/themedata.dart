@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-class MyTheme {
+class ThemeProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.dark;
   bool get isDarkMode => themeMode == ThemeMode.dark;
 
+  void toggleTheme(bool isOn) {
+    themeMode = isOn ? ThemeMode.dark : ThemeMode.light;
+    notifyListeners();
+  }
+}
+
+class MyTheme {
   static final dark = ThemeData(
     disabledColor: Colors.white,
     canvasColor: Color(0xff1E1E1E),

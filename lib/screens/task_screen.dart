@@ -54,11 +54,11 @@ class _TasksScreenState extends State<TasksScreen> {
                     activeTrackColor: Colors.grey,
                     inactiveTrackColor: Colors.grey,
                     inactiveThumbColor: Colors.white,
-                    value: onOff, //Provider.of<MyTheme>(context).isDarkMode,
+                    value: Provider.of<ThemeProvider>(context).isDarkMode,
                     onChanged: (value) {
-                      setState(() {
-                        onOff = value;
-                      });
+                      final provider =
+                          Provider.of<ThemeProvider>(context, listen: false);
+                      provider.toggleTheme(value);
                     }),
                 SizedBox(
                   height: 10,
