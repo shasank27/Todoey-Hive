@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:todoey_flutter/data/task.dart';
 import 'screens/task_screen.dart';
 import 'package:todoey_flutter/data/taskshouter.dart';
 import 'package:todoey_flutter/data/themedata.dart';
@@ -12,6 +13,7 @@ void main() async {
   Directory directory = await getApplicationDocumentsDirectory();
   Hive.init(directory.path);
   await Hive.openBox('todolist');
+  Hive.registerAdapter(TaskModelAdapter());
   runApp(MyApp());
 }
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todoey_flutter/data/taskshouter.dart';
-import 'package:provider/provider.dart';
+import 'package:hive/hive.dart';
+import 'package:todoey_flutter/data/task.dart';
 
 class TaskScreen extends StatelessWidget {
   @override
@@ -46,7 +46,7 @@ class TaskScreen extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              Provider.of<TaskShouter>(context, listen: false).addData(newTask);
+              Hive.box('todolist').add(TaskModel());
               Navigator.pop(context);
             },
             child: Text(
