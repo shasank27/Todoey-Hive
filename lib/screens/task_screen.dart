@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey_flutter/Widgets/task_list.dart';
-import 'package:todoey_flutter/data/taskshouter.dart';
 import 'package:todoey_flutter/data/themedata.dart';
 import 'package:todoey_flutter/screens/task_bottom_bar.dart';
 
@@ -75,7 +74,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   height: 10,
                 ),
                 Text(
-                  '${Provider.of<TaskShouter>(context).tasks.length} tasks remain',
+                  ' tasks remain',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
