@@ -82,7 +82,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   height: 10,
                 ),
                 Text(
-                  ' tasks remain',
+                  '${Hive.box('todolist').length} tasks remain',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
@@ -101,7 +101,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   topRight: Radius.circular(30),
                 ),
               ),
-              child: null, //TaskList(),
+              child: TaskList(),
             ),
           ),
         ],
