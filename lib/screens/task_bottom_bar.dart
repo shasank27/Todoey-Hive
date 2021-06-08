@@ -46,7 +46,7 @@ class TaskScreen extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              Hive.box('todolist').add(TaskModel());
+              Hive.box('todolist').add(TaskModel(text: newTask, isDone: false));
               Navigator.pop(context);
             },
             child: Text(

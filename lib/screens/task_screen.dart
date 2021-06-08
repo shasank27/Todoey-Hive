@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey_flutter/Widgets/task_list.dart';
+import 'package:todoey_flutter/data/task.dart';
 import 'package:todoey_flutter/data/themedata.dart';
 import 'package:todoey_flutter/screens/task_bottom_bar.dart';
 
@@ -10,6 +12,12 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
+  @override
+  void initState() {
+    //Hive.registerAdapter<TaskModel>(TaskModelAdapter());
+    super.initState();
+  }
+
   bool onOff = false;
   @override
   Widget build(BuildContext context) {
@@ -93,7 +101,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   topRight: Radius.circular(30),
                 ),
               ),
-              child: TaskList(),
+              child: null, //TaskList(),
             ),
           ),
         ],

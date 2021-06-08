@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todoey_flutter/data/taskshouter.dart';
+import 'package:hive/hive.dart';
+import 'package:todoey_flutter/data/task.dart';
 import 'task_tile.dart';
 
 class TaskList extends StatefulWidget {
@@ -9,25 +10,27 @@ class TaskList extends StatefulWidget {
 }
 
 class _TaskListState extends State<TaskList> {
+  final buildtasklist = Hive.box('todolist');
+  @override
+  void initState() {
+    //Hive.registerAdapter<TaskModel>(TaskModelAdapter());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Consumer<TaskShouter>(
-      builder: (context, taskShouter, child) {
-        return ListView.builder(
-          itemBuilder: (context, index) {
-            return TaskTile(
-              isChecked: taskShouter.tasks[index].isDone,
-              taskTitle: taskShouter.tasks[index].text,
-              toggleCheckBox: (value) {
-                taskShouter.taskUpdate(taskShouter.tasks[index]);
-              },
-              deleteonLongPress: () {
-                Provider.of<TaskShouter>(context, listen: false)
-                    .taskDelete(taskShouter.tasks[index]);
-              },
-            );
+    return ListView.builder(
+      itemCount: buildtasklist.length,
+      itemBuilder: (context, index) {
+        return TaskTile(
+          isChecked: buildtasklist.get(index).isDone,
+          taskTitle: buildtasklist.get(index).text,
+          toggleCheckBox: () {
+            //buildtasklist.get(index).reDone;
           },
-          itemCount: taskShouter.length,
+          deleteonLongPress: () {
+            //buildtasklist.get(index).delete;
+          },
         );
       },
     );
