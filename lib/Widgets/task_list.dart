@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';
 import 'package:todoey_flutter/data/task.dart';
+import 'package:todoey_flutter/screens/task_screen.dart';
 import 'task_tile.dart';
 
 class TaskList extends StatefulWidget {
@@ -11,7 +12,7 @@ class TaskList extends StatefulWidget {
 
 class _TaskListState extends State<TaskList> {
   final buildtasklist = Hive.box('todolist');
-
+  TasksScreen task;
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
@@ -33,7 +34,9 @@ class _TaskListState extends State<TaskList> {
                   );
                 },
                 deleteonLongPress: () {
-                  buildtasklist.deleteAt(index);
+                  setState(() {
+                    buildtasklist.deleteAt(index);
+                  });
                 },
               );
             },

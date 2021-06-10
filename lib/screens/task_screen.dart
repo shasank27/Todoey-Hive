@@ -5,17 +5,13 @@ import 'package:todoey_flutter/Widgets/task_list.dart';
 import 'package:todoey_flutter/data/themedata.dart';
 import 'package:todoey_flutter/screens/task_bottom_bar.dart';
 
+// ignore: must_be_immutable
 class TasksScreen extends StatefulWidget {
   @override
   _TasksScreenState createState() => _TasksScreenState();
 }
 
 class _TasksScreenState extends State<TasksScreen> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
   bool onOff = false;
   @override
   Widget build(BuildContext context) {
