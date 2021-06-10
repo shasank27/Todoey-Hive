@@ -13,7 +13,6 @@ class TasksScreen extends StatefulWidget {
 class _TasksScreenState extends State<TasksScreen> {
   @override
   void initState() {
-    //Hive.registerAdapter<TaskModel>(TaskModelAdapter());
     super.initState();
   }
 
