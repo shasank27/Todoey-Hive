@@ -41,7 +41,7 @@ class ThemeProvider extends ChangeNotifier {
 class MyTheme {
   static final dark = ThemeData(
     disabledColor: Colors.white,
-    canvasColor: Color(0xff1E1E1E),
+    canvasColor: Color(0xff1D1E20),
     backgroundColor: Colors.black,
     primaryColor: Colors.white,
     scaffoldBackgroundColor: Colors.black,
@@ -54,7 +54,7 @@ class MyTheme {
       backgroundColor: Colors.black,
     ),
     bottomSheetTheme: BottomSheetThemeData(
-      backgroundColor: Color(0xff1E1E1E),
+      backgroundColor: Color(0xff1D1E20),
     ),
   );
   static final light = ThemeData(
