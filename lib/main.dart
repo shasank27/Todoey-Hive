@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey_flutter/data/task.dart';
+import 'data/taskchangenotifier.dart';
 import 'screens/task_screen.dart';
 import 'package:todoey_flutter/data/themedata.dart';
 
@@ -26,6 +27,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context) => TaskChangeNotifier()),
         ChangeNotifierProvider(
           create: (context) => ThemeProvider(),
           builder: (context, _) {

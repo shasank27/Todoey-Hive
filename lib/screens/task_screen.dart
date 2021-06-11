@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey_flutter/Widgets/task_list.dart';
+import 'package:todoey_flutter/data/taskchangenotifier.dart';
 import 'package:todoey_flutter/data/themedata.dart';
 import 'package:todoey_flutter/screens/task_bottom_bar.dart';
 
@@ -76,7 +77,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   height: 10,
                 ),
                 Text(
-                  '${Hive.box('todolist').length} tasks remain',
+                  '${Provider.of<TaskChangeNotifier>(context).tasklength} tasks remain',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
