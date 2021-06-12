@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey_flutter/data/task.dart';
 import 'package:todoey_flutter/data/taskchangenotifier.dart';
@@ -37,8 +38,35 @@ class _TaskListState extends State<TaskList> {
                   );
                 },
                 deleteonLongPress: () {
-                  Provider.of<TaskChangeNotifier>(context, listen: false)
-                      .delete(index);
+                  Alert(
+                    context: context,
+                    type: AlertType.warning,
+                    title: "Delete Alert",
+                    desc: "Are you sure you want to delete?",
+                    buttons: [
+                      DialogButton(
+                        child: Text(
+                          "NO",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                        onPressed: () => Navigator.pop(context),
+                        color: Colors.green,
+                      ),
+                      DialogButton(
+                        child: Text(
+                          "YES",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                        onPressed: () {
+                          Provider.of<TaskChangeNotifier>(context,
+                                  listen: false)
+                              .delete(index);
+                          Navigator.pop(context);
+                        },
+                        color: Colors.red,
+                      ),
+                    ],
+                  ).show();
                 },
               );
             },

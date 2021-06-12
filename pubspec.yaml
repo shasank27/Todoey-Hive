@@ -32,6 +32,7 @@ dependencies:
   hive: ^2.0.4
   hive_flutter: ^1.0.0
   path_provider: ^2.0.2
+  rflutter_alert: ^2.0.2
   shared_preferences: ^2.0.6
   
 dev_dependencies:

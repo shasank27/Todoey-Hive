@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
-import 'package:todoey_flutter/data/task.dart';
 import 'package:todoey_flutter/data/taskchangenotifier.dart';
 
 class TaskScreen extends StatelessWidget {
