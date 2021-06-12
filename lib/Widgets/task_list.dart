@@ -29,16 +29,8 @@ class _TaskListState extends State<TaskList> {
                 isChecked: buildtasklist.getAt(index).isDone,
                 taskTitle: buildtasklist.getAt(index).text,
                 toggleCheckBox: (value) {
-                  print(value);
-                  Hive.box('todolist').putAt(
-                    index,
-                    TaskModel(
-                      text: Hive.box('todolist').getAt(index).text,
-                      isDone: value,
-                    ),
-                  );
                   Provider.of<TaskChangeNotifier>(context, listen: false)
-                      .put(index);
+                      .put(index, value);
                 },
                 deleteonLongPress: () {
                   Alert(
