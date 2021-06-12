@@ -11,6 +11,14 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
+  String taskremain() {
+    int tasks = Provider.of<TaskChangeNotifier>(context).tasklength;
+    if (tasks < 2)
+      return "$tasks task remaining";
+    else
+      return "$tasks tasks remaining";
+  }
+
   bool onOff = false;
   @override
   Widget build(BuildContext context) {
@@ -75,7 +83,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   height: 10,
                 ),
                 Text(
-                  '${Provider.of<TaskChangeNotifier>(context).tasklength} tasks remain',
+                  taskremain(),
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
