@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';
@@ -39,6 +41,14 @@ class _TaskListState extends State<TaskList> {
                 },
                 deleteonLongPress: () {
                   Alert(
+                    style: AlertStyle(
+                        backgroundColor: Theme.of(context).canvasColor,
+                        titleStyle: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        descStyle: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                        )),
                     context: context,
                     type: AlertType.warning,
                     title: "Delete Alert",
