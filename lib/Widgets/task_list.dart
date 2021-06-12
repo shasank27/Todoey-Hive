@@ -3,7 +3,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:provider/provider.dart';
-import 'package:todoey_flutter/data/task.dart';
 import 'package:todoey_flutter/data/taskchangenotifier.dart';
 import 'package:todoey_flutter/screens/task_screen.dart';
 import 'task_tile.dart';
