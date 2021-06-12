@@ -5,7 +5,6 @@ import 'package:todoey_flutter/data/taskchangenotifier.dart';
 import 'package:todoey_flutter/data/themedata.dart';
 import 'package:todoey_flutter/screens/task_bottom_bar.dart';
 
-// ignore: must_be_immutable
 class TasksScreen extends StatefulWidget {
   @override
   _TasksScreenState createState() => _TasksScreenState();

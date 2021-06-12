@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';
@@ -31,24 +29,28 @@ class _TaskListState extends State<TaskList> {
                 isChecked: buildtasklist.getAt(index).isDone,
                 taskTitle: buildtasklist.getAt(index).text,
                 toggleCheckBox: (value) {
-                  buildtasklist.putAt(
+                  print(value);
+                  Hive.box('todolist').putAt(
                     index,
                     TaskModel(
-                      text: buildtasklist.getAt(index).text,
-                      isDone: buildtasklist.getAt(index).isDone ? false : true,
+                      text: Hive.box('todolist').getAt(index).text,
+                      isDone: value,
                     ),
                   );
+                  Provider.of<TaskChangeNotifier>(context, listen: false)
+                      .put(index);
                 },
                 deleteonLongPress: () {
                   Alert(
                     style: AlertStyle(
-                        backgroundColor: Theme.of(context).canvasColor,
-                        titleStyle: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                        ),
-                        descStyle: TextStyle(
-                          color: Theme.of(context).primaryColor,
-                        )),
+                      backgroundColor: Theme.of(context).canvasColor,
+                      titleStyle: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      descStyle: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                    ),
                     context: context,
                     type: AlertType.warning,
                     title: "Delete Alert",

@@ -13,7 +13,14 @@ class TaskChangeNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  void put(int index) async {
+    notifyListeners();
+  }
+
   int get tasklength {
-    return Hive.box('todolist').length;
+    return Hive.box('todolist')
+        .values
+        .where((element) => element.isDone == false)
+        .length;
   }
 }
