@@ -46,9 +46,11 @@ class TaskScreen extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {
-              Provider.of<TaskChangeNotifier>(context, listen: false)
-                  .add(newTask);
-              Navigator.pop(context);
+              if (!(newTask?.trim()?.isEmpty ?? true)) {
+                Provider.of<TaskChangeNotifier>(context, listen: false)
+                    .add(newTask);
+                Navigator.pop(context);
+              }
             },
             child: Text(
               'Add',
