@@ -58,10 +58,11 @@ class _TasksScreenState extends State<TasksScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Switch.adaptive(
-                    activeColor: Colors.white,
-                    activeTrackColor: Colors.grey,
-                    inactiveTrackColor: Colors.grey,
-                    inactiveThumbColor: Colors.white,
+                    activeThumbImage: AssetImage('images/moon.png'),
+                    inactiveThumbImage: AssetImage('images/sun.png'),
+                    activeTrackColor: Colors.indigo[1000],
+                    inactiveTrackColor: Colors.blue[50],
+                    splashRadius: 50,
                     value: Provider.of<ThemeProvider>(context).isDarkMode,
                     onChanged: (value) {
                       final provider =
