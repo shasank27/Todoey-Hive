@@ -34,6 +34,13 @@ class _TaskListState extends State<TaskList> {
                 deleteonLongPress: () {
                   Alert(
                     style: AlertStyle(
+                      alertPadding: EdgeInsets.all(10),
+                      alertBorder: RoundedRectangleBorder(
+                        side: BorderSide.none,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(30),
+                        ),
+                      ),
                       backgroundColor: Theme.of(context).canvasColor,
                       titleStyle: TextStyle(
                         color: Theme.of(context).primaryColor,
@@ -48,14 +55,16 @@ class _TaskListState extends State<TaskList> {
                     desc: "Are you sure you want to delete?",
                     buttons: [
                       DialogButton(
+                        radius: BorderRadius.circular(20),
                         child: Text(
                           "NO",
                           style: TextStyle(color: Colors.white, fontSize: 20),
                         ),
                         onPressed: () => Navigator.pop(context),
-                        color: Colors.green,
+                        color: Colors.blueGrey,
                       ),
                       DialogButton(
+                        radius: BorderRadius.circular(20),
                         child: Text(
                           "YES",
                           style: TextStyle(color: Colors.white, fontSize: 20),
@@ -66,7 +75,7 @@ class _TaskListState extends State<TaskList> {
                               .delete(index);
                           Navigator.pop(context);
                         },
-                        color: Colors.red,
+                        color: Colors.pinkAccent,
                       ),
                     ],
                   ).show();
