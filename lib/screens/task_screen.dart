@@ -61,7 +61,7 @@ class _TasksScreenState extends State<TasksScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Switch(
+                  Switch.adaptive(
                     activeThumbImage: AssetImage('images/moon.png'),
                     inactiveThumbImage: AssetImage('images/sun.png'),
                     activeTrackColor: Colors.indigo[1000],

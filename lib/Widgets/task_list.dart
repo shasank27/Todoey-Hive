@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hive/hive.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:provider/provider.dart';
+import 'package:todoey_flutter/data/task.dart';
 import 'package:todoey_flutter/data/taskchangenotifier.dart';
 import 'package:todoey_flutter/screens/task_screen.dart';
 import 'task_tile.dart';
@@ -14,22 +15,25 @@ class TaskListDone extends StatefulWidget {
 
 class _TaskListDoneState extends State<TaskListDone> {
   TaskChangeNotifier taskChangeNotifier;
-  final buildtasklist = Hive.box(
-      'todolist'); //.values.where((element) => element.isDone == false);
   TasksScreen task;
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: Hive.box('todolist').listenable(),
       builder: (context, value, _) {
+        List<TaskModel> buildtasklist = Hive.box('todolist')
+            .values
+            .where((element) => element.isDone == true)
+            .map<TaskModel>((e) => e)
+            .toList();
         return ListView.builder(
           shrinkWrap: true,
           padding: EdgeInsets.only(top: 10),
           itemCount: buildtasklist.length,
           itemBuilder: (context, index) {
             return TaskTile(
-              isChecked: buildtasklist.getAt(index).isDone,
-              taskTitle: buildtasklist.getAt(index).text,
+              isChecked: buildtasklist[index].isDone,
+              taskTitle: buildtasklist[index].text,
               toggleCheckBox: (value) {
                 Provider.of<TaskChangeNotifier>(context, listen: false)
                     .put(index, value);
@@ -97,21 +101,25 @@ class TaskList extends StatefulWidget {
 
 class _TaskListState extends State<TaskList> {
   TaskChangeNotifier taskChangeNotifier;
-  final buildtasklist = Hive.box('todolist');
   TasksScreen task;
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
         valueListenable: Hive.box('todolist').listenable(),
         builder: (context, value, _) {
+          List<TaskModel> buildtasklist = Hive.box('todolist')
+              .values
+              .where((element) => element.isDone == false)
+              .map<TaskModel>((e) => e)
+              .toList();
           return ListView.builder(
             shrinkWrap: true,
             padding: EdgeInsets.only(top: 10),
             itemCount: buildtasklist.length,
             itemBuilder: (context, index) {
               return TaskTile(
-                isChecked: buildtasklist.getAt(index).isDone,
-                taskTitle: buildtasklist.getAt(index).text,
+                isChecked: buildtasklist[index].isDone,
+                taskTitle: buildtasklist[index].text,
                 toggleCheckBox: (value) {
                   Provider.of<TaskChangeNotifier>(context, listen: false)
                       .put(index, value);
