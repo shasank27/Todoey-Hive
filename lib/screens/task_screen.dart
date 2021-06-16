@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey_flutter/Widgets/task_list.dart';
+import 'package:todoey_flutter/data/task.dart';
 import 'package:todoey_flutter/data/taskchangenotifier.dart';
 import 'package:todoey_flutter/data/themedata.dart';
 import 'package:todoey_flutter/screens/task_bottom_bar.dart';
@@ -119,13 +121,25 @@ class _TasksScreenState extends State<TasksScreen> {
                     SizedBox(
                       height: 7,
                     ),
-                    TaskList(),
+                    TaskList(
+                      hivebox: Hive.box('todolist')
+                          .values
+                          .where((element) => element.isDone == false)
+                          .map<TaskModel>((e) => e)
+                          .toList(),
+                    ),
                     Divider(
                       indent: 12,
                       endIndent: 12,
                       color: Colors.black,
                     ),
-                    TaskListDone(),
+                    TaskListDone(
+                      hivebox: Hive.box('todolist')
+                          .values
+                          .where((element) => element.isDone == true)
+                          .map<TaskModel>((e) => e)
+                          .toList(),
+                    ),
                   ],
                 ),
               ),

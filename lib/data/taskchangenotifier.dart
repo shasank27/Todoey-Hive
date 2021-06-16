@@ -3,22 +3,26 @@ import 'package:hive/hive.dart';
 import 'package:todoey_flutter/data/task.dart';
 
 class TaskChangeNotifier extends ChangeNotifier {
-  void delete(int index) {
-    Hive.box('todolist').deleteAt(index);
+  void delete(int index) async {
+    await Hive.box('todolist').deleteAt(index);
     notifyListeners();
   }
 
-  void add(String string) {
-    Hive.box('todolist').add(TaskModel(text: string, isDone: false));
+  void add(String string) async {
+    await Hive.box('todolist').add(TaskModel(text: string, isDone: false));
     notifyListeners();
   }
 
   void put(int index, bool value) async {
-    Hive.box('todolist').putAt(
+    var hive = Hive.box('todolist');
+    print("\n" + hive.getAt(index).text);
+    print(hive.getAt(index).isDone);
+    print(index);
+    await hive.putAt(
       index,
       TaskModel(
-        text: Hive.box('todolist').getAt(index).text,
-        isDone: value,
+        text: hive.getAt(index).text,
+        isDone: !value,
       ),
     );
     notifyListeners();
