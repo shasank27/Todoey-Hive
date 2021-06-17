@@ -44,26 +44,35 @@ class _TaskListState extends State<TaskList> {
   }
 }
 
-class BuildValueListenableBuilder extends StatelessWidget {
+class BuildValueListenableBuilder extends StatefulWidget {
   final List<TaskModel> hivebox;
   BuildValueListenableBuilder({@required this.hivebox});
+
+  @override
+  _BuildValueListenableBuilderState createState() =>
+      _BuildValueListenableBuilderState();
+}
+
+class _BuildValueListenableBuilderState
+    extends State<BuildValueListenableBuilder> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
         valueListenable: Hive.box('todolist').listenable(),
         builder: (context, value, _) {
-          List<TaskModel> buildtasklist = hivebox;
           return ListView.builder(
             shrinkWrap: true,
             padding: EdgeInsets.only(top: 10),
-            itemCount: buildtasklist.length,
+            itemCount: widget.hivebox.length,
             itemBuilder: (context, index) {
               return TaskTile(
-                isChecked: buildtasklist[index].isDone,
-                taskTitle: buildtasklist[index].text,
+                isChecked: widget.hivebox[index].isDone,
+                taskTitle: widget.hivebox[index].text,
                 toggleCheckBox: (value) {
-                  Provider.of<TaskChangeNotifier>(context, listen: false)
-                      .put(index, buildtasklist[index].isDone);
+                  setState(() {
+                    Provider.of<TaskChangeNotifier>(context, listen: false)
+                        .put(index, widget.hivebox[index].isDone);
+                  });
                 },
                 deleteonLongPress: () {
                   Alert(

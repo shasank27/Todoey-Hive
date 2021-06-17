@@ -15,13 +15,13 @@ class TaskChangeNotifier extends ChangeNotifier {
 
   void put(int index, bool value) async {
     var hive = Hive.box('todolist');
-    print("\n" + hive.getAt(index).text);
-    print(hive.getAt(index).isDone);
-    print(index);
+    // print("\n" + hive.getAt(index).text);
+    // print(hive.getAt(index).isDone);
+    // print(index);
     await hive.putAt(
       index,
       TaskModel(
-        text: hive.getAt(index).text,
+        text: await hive.getAt(index).text,
         isDone: !value,
       ),
     );
