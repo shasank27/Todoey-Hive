@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey_flutter/Widgets/task_list.dart';
 import 'package:todoey_flutter/data/task.dart';
@@ -64,10 +65,10 @@ class _TasksScreenState extends State<TasksScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Switch.adaptive(
-                    activeColor: Colors.blue[900],
-                    inactiveThumbColor: Colors.yellow[700],
-                    activeTrackColor: Colors.lime[200],
-                    inactiveTrackColor: Colors.blue[100],
+                    activeThumbImage: AssetImage('images/moon.png'),
+                    inactiveThumbImage: AssetImage('images/sun.png'),
+                    activeTrackColor: Colors.indigo[1000],
+                    inactiveTrackColor: Colors.blue[50],
                     value: Provider.of<ThemeProvider>(context).isDarkMode,
                     onChanged: (value) {
                       final provider =

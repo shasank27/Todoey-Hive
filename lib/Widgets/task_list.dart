@@ -69,10 +69,8 @@ class _BuildValueListenableBuilderState
                 isChecked: widget.hivebox[index].isDone,
                 taskTitle: widget.hivebox[index].text,
                 toggleCheckBox: (value) {
-                  setState(() {
-                    Provider.of<TaskChangeNotifier>(context, listen: false)
-                        .put(index, widget.hivebox[index].isDone);
-                  });
+                  Provider.of<TaskChangeNotifier>(context, listen: false)
+                      .put(index, widget.hivebox[index].isDone);
                 },
                 deleteonLongPress: () {
                   Alert(

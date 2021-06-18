@@ -8,6 +8,22 @@ class TaskChangeNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  List<TaskModel> getDone() {
+    return Hive.box('todolist')
+        .values
+        .where((element) => element.isDone == false)
+        .map<TaskModel>((e) => e)
+        .toList();
+  }
+
+  List<TaskModel> getNotDone() {
+    return Hive.box('todolist')
+        .values
+        .where((element) => element.isDone == true)
+        .map<TaskModel>((e) => e)
+        .toList();
+  }
+
   void add(String string) async {
     await Hive.box('todolist').add(TaskModel(text: string, isDone: false));
     notifyListeners();
@@ -15,9 +31,9 @@ class TaskChangeNotifier extends ChangeNotifier {
 
   void put(int index, bool value) async {
     var hive = Hive.box('todolist');
-    // print("\n" + hive.getAt(index).text);
-    // print(hive.getAt(index).isDone);
-    // print(index);
+    print("\n" + hive.getAt(index).text);
+    print(hive.getAt(index).isDone);
+    print(index);
     await hive.putAt(
       index,
       TaskModel(
