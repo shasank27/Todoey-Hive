@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey_flutter/Widgets/task_list.dart';
 import 'package:todoey_flutter/data/task.dart';
@@ -64,18 +65,32 @@ class _TasksScreenState extends State<TasksScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Switch.adaptive(
-                    activeThumbImage: AssetImage('images/moon.png'),
-                    inactiveThumbImage: AssetImage('images/sun.png'),
-                    activeTrackColor: Colors.indigo[1000],
-                    inactiveTrackColor: Colors.blue[50],
-                    value: Provider.of<ThemeProvider>(context).isDarkMode,
-                    onChanged: (value) {
-                      final provider =
+                  FlutterSwitch(
+                      width: 70.0,
+                      height: 30.0,
+                      toggleSize: 20.0,
+                      value: Provider.of<ThemeProvider>(context).isDarkMode,
+                      inactiveToggleColor: Color(0xffE8F258),
+                      activeColor: Color(0xff686767),
+                      inactiveColor: Color(0xff37B7C0),
+                      onToggle: (value) {
+                                              final provider =
                           Provider.of<ThemeProvider>(context, listen: false);
                       provider.toggleTheme(value);
-                    },
-                  ),
+                      },
+                    ),
+                  // Switch.adaptive(
+                  //   activeThumbImage: AssetImage('images/moon.png'),
+                  //   inactiveThumbImage: AssetImage('images/sun.png'),
+                  //   activeTrackColor: Colors.indigo[1000],
+                  //   inactiveTrackColor: Colors.blue[50],
+                  //   value: Provider.of<ThemeProvider>(context).isDarkMode,
+                  //   onChanged: (value) {
+                      // final provider =
+                      //     Provider.of<ThemeProvider>(context, listen: false);
+                      // provider.toggleTheme(value);
+                  //   },
+                  // ),
                   SizedBox(
                     height: 10,
                   ),
@@ -130,9 +145,10 @@ class _TasksScreenState extends State<TasksScreen> {
                           .toList(),
                     ),
                     Divider(
+                      thickness: 2,
                       indent: 12,
                       endIndent: 12,
-                      color: Colors.black,
+                      color: Theme.of(context).disabledColor,
                     ),
                     TaskListDone(
                       hivebox: Hive.box('todolist')

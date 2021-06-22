@@ -26,7 +26,7 @@ class TaskTile extends StatelessWidget {
       ),
       trailing: Checkbox(
         value: isChecked,
-        activeColor: Theme.of(context).disabledColor,
+        fillColor: MaterialStateProperty.all(Theme.of(context).disabledColor),
         checkColor: Theme.of(context).canvasColor,
         onChanged: toggleCheckBox,
       ),

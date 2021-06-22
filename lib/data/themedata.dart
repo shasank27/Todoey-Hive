@@ -41,7 +41,7 @@ class ThemeProvider extends ChangeNotifier {
 class MyTheme {
   static final dark = ThemeData(
     disabledColor: Colors.white,
-    canvasColor: Color(0xff1D1E20),
+    canvasColor: Color(0xff686767),
     backgroundColor: Colors.black,
     primaryColor: Colors.white,
     scaffoldBackgroundColor: Colors.black,
@@ -54,22 +54,22 @@ class MyTheme {
       backgroundColor: Colors.black,
     ),
     bottomSheetTheme: BottomSheetThemeData(
-      backgroundColor: Color(0xff1D1E20),
+      backgroundColor: Color(0xff686767),
     ),
   );
   static final light = ThemeData(
-    disabledColor: Colors.lightBlueAccent,
+    disabledColor: Color(0xffFF616D),
     canvasColor: Colors.white,
-    backgroundColor: Colors.lightBlueAccent,
+    backgroundColor: Color(0xffFF616D),
     primaryColor: Colors.black,
-    scaffoldBackgroundColor: Colors.lightBlueAccent,
+    scaffoldBackgroundColor: Color(0xffFF616D),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(Colors.lightBlueAccent),
+        backgroundColor: MaterialStateProperty.all(Color(0xffFF616D)),
       ),
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: Color(0xffFF616D),
     ),
     bottomSheetTheme: BottomSheetThemeData(
       backgroundColor: Colors.white,
