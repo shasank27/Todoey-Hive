@@ -70,7 +70,7 @@ class _BuildValueListenableBuilderState
                 taskTitle: widget.hivebox[index].text,
                 toggleCheckBox: (value) {
                   Provider.of<TaskChangeNotifier>(context, listen: false)
-                      .put(index, widget.hivebox[index].isDone);
+                      .put(widget.hivebox[index].uuid);
                 },
                 deleteonLongPress: () {
                   Alert(
@@ -113,7 +113,7 @@ class _BuildValueListenableBuilderState
                         onPressed: () {
                           Provider.of<TaskChangeNotifier>(context,
                                   listen: false)
-                              .delete(index);
+                              .delete(widget.hivebox[index].uuid);
                           Navigator.pop(context);
                         },
                         color: Colors.pinkAccent,

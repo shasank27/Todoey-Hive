@@ -59,28 +59,36 @@ class _TasksScreenState extends State<TasksScreen> {
           Expanded(
             flex: 3,
             child: Container(
+              // decoration: BoxDecoration(
+              //   gradient: LinearGradient(
+              //     begin: Alignment.bottomCenter,
+              //     end: Alignment.topCenter,
+              //     stops: [0, .3],
+              //     colors: [Theme.of(context).hintColor, Theme.of(context).backgroundColor],
+              //     ),
+              //   ),
               color: Theme.of(context).backgroundColor,
               padding:
                   EdgeInsets.only(top: 50, left: 30, right: 30, bottom: 30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                        child: FlutterSwitch(
-                        width: 70.0,
-                        height: 30.0,
-                        toggleSize: 20.0,
-                        value: Provider.of<ThemeProvider>(context).isDarkMode,
-                        inactiveToggleColor: Color(0xffE8F258),
-                        activeColor: Color(0xff686767),
-                        inactiveColor: Color(0xff37B7C0),
-                        onToggle: (value) {
-                                                final provider =
-                            Provider.of<ThemeProvider>(context, listen: false);
-                        provider.toggleTheme(value);
-                        },
-                      ),
+                  Container(
+                    width: 60,
+                    child: FlutterSwitch(
+                    width: 60.0,
+                    height: 30.0,
+                    toggleSize: 20.0,
+                    value: Provider.of<ThemeProvider>(context).isDarkMode,
+                    inactiveToggleColor: Color(0xffE8F258),
+                    activeColor: Color(0xff686767),
+                    inactiveColor: Color(0xff37B7C0),
+                    onToggle: (value) {
+                        final provider =
+                        Provider.of<ThemeProvider>(context, listen: false);
+                    provider.toggleTheme(value);
+                    },
+                        ),
                   ),
                   // Switch.adaptive(
                   //   activeThumbImage: AssetImage('images/moon.png'),

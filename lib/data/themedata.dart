@@ -40,6 +40,7 @@ class ThemeProvider extends ChangeNotifier {
 
 class MyTheme {
   static final dark = ThemeData(
+    hintColor: Color(545454),
     disabledColor: Colors.white,
     canvasColor: Color(0xff686767),
     backgroundColor: Colors.black,
@@ -58,6 +59,7 @@ class MyTheme {
     ),
   );
   static final light = ThemeData(
+    hintColor: Color(803137),
     disabledColor: Color(0xffFF616D),
     canvasColor: Colors.white,
     backgroundColor: Color(0xffFF616D),
