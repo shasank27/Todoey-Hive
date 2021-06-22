@@ -65,20 +65,23 @@ class _TasksScreenState extends State<TasksScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  FlutterSwitch(
-                      width: 70.0,
-                      height: 30.0,
-                      toggleSize: 20.0,
-                      value: Provider.of<ThemeProvider>(context).isDarkMode,
-                      inactiveToggleColor: Color(0xffE8F258),
-                      activeColor: Color(0xff686767),
-                      inactiveColor: Color(0xff37B7C0),
-                      onToggle: (value) {
-                                              final provider =
-                          Provider.of<ThemeProvider>(context, listen: false);
-                      provider.toggleTheme(value);
-                      },
-                    ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                        child: FlutterSwitch(
+                        width: 70.0,
+                        height: 30.0,
+                        toggleSize: 20.0,
+                        value: Provider.of<ThemeProvider>(context).isDarkMode,
+                        inactiveToggleColor: Color(0xffE8F258),
+                        activeColor: Color(0xff686767),
+                        inactiveColor: Color(0xff37B7C0),
+                        onToggle: (value) {
+                                                final provider =
+                            Provider.of<ThemeProvider>(context, listen: false);
+                        provider.toggleTheme(value);
+                        },
+                      ),
+                  ),
                   // Switch.adaptive(
                   //   activeThumbImage: AssetImage('images/moon.png'),
                   //   inactiveThumbImage: AssetImage('images/sun.png'),
@@ -86,9 +89,9 @@ class _TasksScreenState extends State<TasksScreen> {
                   //   inactiveTrackColor: Colors.blue[50],
                   //   value: Provider.of<ThemeProvider>(context).isDarkMode,
                   //   onChanged: (value) {
-                      // final provider =
-                      //     Provider.of<ThemeProvider>(context, listen: false);
-                      // provider.toggleTheme(value);
+                  // final provider =
+                  //     Provider.of<ThemeProvider>(context, listen: false);
+                  // provider.toggleTheme(value);
                   //   },
                   // ),
                   SizedBox(

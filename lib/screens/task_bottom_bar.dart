@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todoey_flutter/data/taskchangenotifier.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TaskScreen extends StatelessWidget {
   @override
@@ -20,9 +21,10 @@ class TaskScreen extends StatelessWidget {
           Text(
             'Add Task',
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: GoogleFonts.openSans(
               color: Theme.of(context).disabledColor,
               fontSize: 30.0,
+              
             ),
           ),
           TextField(
