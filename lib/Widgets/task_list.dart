@@ -66,62 +66,62 @@ class _BuildValueListenableBuilderState
             itemCount: widget.hivebox.length,
             itemBuilder: (context, index) {
               return TaskTile(
-                isChecked: widget.hivebox[index].isDone,
-                taskTitle: widget.hivebox[index].text,
-                toggleCheckBox: (value) {
-                  Provider.of<TaskChangeNotifier>(context, listen: false)
-                      .put(widget.hivebox[index].uuid);
-                },
-                deleteonLongPress: () {
-                  Alert(
-                    style: AlertStyle(
-                      alertPadding: EdgeInsets.all(10),
-                      alertBorder: RoundedRectangleBorder(
-                        side: BorderSide.none,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(30),
+                  isChecked: widget.hivebox[index].isDone,
+                  taskTitle: widget.hivebox[index].text,
+                  toggleCheckBox: (value) {
+                    Provider.of<TaskChangeNotifier>(context, listen: false)
+                        .put(widget.hivebox[index].uuid);
+                  },
+                  deleteonLongPress: () {
+                    Alert(
+                      style: AlertStyle(
+                        alertPadding: EdgeInsets.all(10),
+                        alertBorder: RoundedRectangleBorder(
+                          side: BorderSide.none,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(30),
+                          ),
+                        ),
+                        backgroundColor: Theme.of(context).canvasColor,
+                        titleStyle: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                        ),
+                        descStyle: TextStyle(
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
-                      backgroundColor: Theme.of(context).canvasColor,
-                      titleStyle: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                      ),
-                      descStyle: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    ),
-                    context: context,
-                    type: AlertType.warning,
-                    title: "Delete Alert",
-                    desc: "Are you sure you want to delete?",
-                    buttons: [
-                      DialogButton(
-                        radius: BorderRadius.circular(20),
-                        child: Text(
-                          "NO",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                      context: context,
+                      type: AlertType.warning,
+                      title: "Delete Alert",
+                      desc: "Are you sure you want to delete?",
+                      buttons: [
+                        DialogButton(
+                          radius: BorderRadius.circular(20),
+                          child: Text(
+                            "NO",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () => Navigator.pop(context),
+                          color: Colors.blueGrey,
                         ),
-                        onPressed: () => Navigator.pop(context),
-                        color: Colors.blueGrey,
-                      ),
-                      DialogButton(
-                        radius: BorderRadius.circular(20),
-                        child: Text(
-                          "YES",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        DialogButton(
+                          radius: BorderRadius.circular(20),
+                          child: Text(
+                            "YES",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () {
+                            Provider.of<TaskChangeNotifier>(context,
+                    listen: false)
+                .delete(widget.hivebox[index].uuid);
+                            Navigator.pop(context);
+                          },
+                          color: Color(0xffFF616D),
                         ),
-                        onPressed: () {
-                          Provider.of<TaskChangeNotifier>(context,
-                                  listen: false)
-                              .delete(widget.hivebox[index].uuid);
-                          Navigator.pop(context);
-                        },
-                        color: Colors.pinkAccent,
-                      ),
-                    ],
-                  ).show();
-                },
-              );
+                      ],
+                    ).show();
+                  },
+                );
             },
           );
         });

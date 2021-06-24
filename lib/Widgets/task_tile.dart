@@ -16,19 +16,23 @@ class TaskTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onLongPress: deleteonLongPress,
-      leading: Text(
+      title: Text(
         taskTitle,
+        textWidthBasis: TextWidthBasis.longestLine,
         style: TextStyle(
-          color: Theme.of(context).primaryColor,
-          fontSize: 20,
-          decoration: isChecked ? TextDecoration.lineThrough : null,
-        ),
+        color: Theme.of(context).primaryColor,
+        fontSize: 20,
+        decoration: isChecked ? TextDecoration.lineThrough : null,
+              ),
       ),
-      trailing: Checkbox(
-        value: isChecked,
-        fillColor: MaterialStateProperty.all(Theme.of(context).disabledColor),
-        checkColor: Theme.of(context).canvasColor,
-        onChanged: toggleCheckBox,
+      trailing: Container(
+        padding: EdgeInsets.all(2),
+              child: Checkbox(
+          value: isChecked,
+          fillColor: MaterialStateProperty.all(Theme.of(context).disabledColor),
+          checkColor: Theme.of(context).canvasColor,
+          onChanged: toggleCheckBox,
+        ),
       ),
     );
   }
