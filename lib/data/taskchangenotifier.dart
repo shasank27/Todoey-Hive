@@ -5,10 +5,15 @@ import 'package:todoey_flutter/data/task.dart';
 
 class TaskChangeNotifier extends ChangeNotifier {
   void delete(var uid) async {
-    List<TaskModel> index =
-        Hive.box('todolist').values.where((element) => element.uuid == uid);
-  
-  //  await Hive.box('todolist').
+    List box = Hive.box('todolist').values.toList();
+    int count = 0;
+    for (var i in box) {
+      if (i.uuid == uid) {
+        break;
+      }
+      count++;
+    }
+    await Hive.box('todolist').deleteAt(count);
     notifyListeners();
   }
 
@@ -35,20 +40,23 @@ class TaskChangeNotifier extends ChangeNotifier {
   }
 
   void put(var uid) async {
+    List box = Hive.box('todolist').values.toList();
+    int count = 0;
+    for (var i in box) {
+      if (i.uuid == uid) {
+        break;
+      }
+      count++;
+    }
     var hive = Hive.box('todolist');
-    List<TaskModel> index =
-        Hive.box('todolist').values.map<TaskModel>((e) => e).toList(); //where((element) => element.uuid == uid);
-    
-    // print("\n" + hive.getAt(index).text);
-    // print(hive.getAt(index).isDone);
-    // print(index);
-    // await hive.putAt(
-    //   // index,
-    //   // TaskModel(
-    //   //   text: await hive.getAt(index).text,
-    //   //   isDone: !value,
-    //  // ),
-    // );
+    await hive.putAt(
+      count,
+      TaskModel(
+        text: hive.getAt(count).text,
+        isDone: !hive.getAt(count).isDone,
+        uuid: hive.getAt(count).uuid,
+      ),
+    );
     notifyListeners();
   }
 

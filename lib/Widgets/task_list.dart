@@ -112,8 +112,8 @@ class _BuildValueListenableBuilderState
                           ),
                           onPressed: () {
                             Provider.of<TaskChangeNotifier>(context,
-                    listen: false)
-                .delete(widget.hivebox[index].uuid);
+                            listen: false)
+                            .delete(widget.hivebox[index].uuid);
                             Navigator.pop(context);
                           },
                           color: Color(0xffFF616D),
