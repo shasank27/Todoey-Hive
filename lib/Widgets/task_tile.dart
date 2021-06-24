@@ -18,7 +18,7 @@ class TaskTile extends StatelessWidget {
       onLongPress: deleteonLongPress,
       title: Text(
         taskTitle,
-        textWidthBasis: TextWidthBasis.longestLine,
+        textAlign: TextAlign.justify,
         style: TextStyle(
         color: Theme.of(context).primaryColor,
         fontSize: 20,
