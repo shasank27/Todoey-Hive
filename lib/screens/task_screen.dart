@@ -31,6 +31,7 @@ class _TasksScreenState extends State<TasksScreen> {
       floatingActionButton: FloatingActionButton(
         child: Icon(
           Icons.add,
+          color : Colors.white,
           size: 30,
         ),
         onPressed: () {
