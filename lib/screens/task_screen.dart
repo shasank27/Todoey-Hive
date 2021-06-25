@@ -142,7 +142,8 @@ class _TasksScreenState extends State<TasksScreen> {
                 ),
               ),
               child: SingleChildScrollView(
-                child: Column(
+                
+                              child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -150,12 +151,12 @@ class _TasksScreenState extends State<TasksScreen> {
                       height: 7,
                     ),
                     TaskList(
-                      hivebox: Hive.box('todolist')
-                          .values
-                          .where((element) => element.isDone == false)
-                          .map<TaskModel>((e) => e)
-                          .toList(),
-                    ),
+                        hivebox: Hive.box('todolist')
+                            .values
+                            .where((element) => element.isDone == false)
+                            .map<TaskModel>((e) => e)
+                            .toList(),
+                      ),
                     Divider(
                       thickness: 2,
                       indent: 12,
@@ -163,12 +164,12 @@ class _TasksScreenState extends State<TasksScreen> {
                       color: Theme.of(context).disabledColor,
                     ),
                     TaskListDone(
-                      hivebox: Hive.box('todolist')
-                          .values
-                          .where((element) => element.isDone == true)
-                          .map<TaskModel>((e) => e)
-                          .toList(),
-                    ),
+                        hivebox: Hive.box('todolist')
+                            .values
+                            .where((element) => element.isDone == true)
+                            .map<TaskModel>((e) => e)
+                            .toList(),
+                      ),
                   ],
                 ),
               ),

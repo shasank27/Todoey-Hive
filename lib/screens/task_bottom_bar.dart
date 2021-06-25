@@ -3,7 +3,14 @@ import 'package:provider/provider.dart';
 import 'package:todoey_flutter/data/taskchangenotifier.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TaskScreen extends StatelessWidget {
+class TaskScreen extends StatefulWidget {
+  @override
+  _TaskScreenState createState() => _TaskScreenState();
+}
+
+class _TaskScreenState extends State<TaskScreen> {
+  TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     String newTask;
@@ -28,6 +35,7 @@ class TaskScreen extends StatelessWidget {
             ),
           ),
           TextField(
+            controller: _controller,
             textCapitalization: TextCapitalization.sentences,
             style: TextStyle(color: Theme.of(context).primaryColor),
             decoration: InputDecoration(
@@ -50,6 +58,7 @@ class TaskScreen extends StatelessWidget {
                     .add(value);
                 Navigator.pop(context);
               }
+              
             },
             autofocus: true,
           ),
@@ -61,6 +70,11 @@ class TaskScreen extends StatelessWidget {
               if (!(newTask?.trim()?.isEmpty ?? true)) {
                 Provider.of<TaskChangeNotifier>(context, listen: false)
                     .add(newTask);
+                Navigator.pop(context);
+              }
+              else if(_controller.text.isNotEmpty){
+                Provider.of<TaskChangeNotifier>(context, listen: false)
+                    .add(_controller.text);
                 Navigator.pop(context);
               }
             },

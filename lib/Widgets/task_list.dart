@@ -61,6 +61,7 @@ class _BuildValueListenableBuilderState
         valueListenable: Hive.box('todolist').listenable(),
         builder: (context, value, _) {
           return ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             padding: EdgeInsets.only(top: 10),
             itemCount: widget.hivebox.length,
