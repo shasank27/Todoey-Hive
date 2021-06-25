@@ -142,8 +142,7 @@ class _TasksScreenState extends State<TasksScreen> {
                 ),
               ),
               child: SingleChildScrollView(
-                
-                              child: Column(
+                  child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
