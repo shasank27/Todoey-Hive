@@ -8,7 +8,7 @@ class TaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     String newTask;
     return Container(
-      height: MediaQuery.of(context).viewInsets.bottom+210,
+      height: MediaQuery.of(context).viewInsets.bottom + 210,
       padding: EdgeInsets.only(top: 30, right: 30, left: 30),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -25,7 +25,6 @@ class TaskScreen extends StatelessWidget {
             style: GoogleFonts.openSans(
               color: Theme.of(context).disabledColor,
               fontSize: 30.0,
-              
             ),
           ),
           TextField(
@@ -44,6 +43,13 @@ class TaskScreen extends StatelessWidget {
             cursorColor: Theme.of(context).disabledColor,
             onChanged: (String value) {
               newTask = value;
+            },
+            onSubmitted: (value) {
+              if (!(value?.trim()?.isEmpty ?? true)) {
+                Provider.of<TaskChangeNotifier>(context, listen: false)
+                    .add(value);
+                Navigator.pop(context);
+              }
             },
             autofocus: true,
           ),
