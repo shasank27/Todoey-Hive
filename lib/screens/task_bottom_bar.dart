@@ -33,6 +33,7 @@ class TaskScreen extends StatelessWidget {
             style: TextStyle(color: Theme.of(context).primaryColor),
             decoration: InputDecoration(
               hintText: "Enter your task here",
+              hintStyle: TextStyle(color: Theme.of(context).highlightColor),
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(color: Theme.of(context).disabledColor),
               ),
