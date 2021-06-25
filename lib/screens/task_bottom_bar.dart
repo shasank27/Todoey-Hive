@@ -8,6 +8,7 @@ class TaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     String newTask;
     return Container(
+      height: MediaQuery.of(context).viewInsets.bottom+210,
       padding: EdgeInsets.only(top: 30, right: 30, left: 30),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
@@ -28,8 +29,10 @@ class TaskScreen extends StatelessWidget {
             ),
           ),
           TextField(
+            textCapitalization: TextCapitalization.sentences,
             style: TextStyle(color: Theme.of(context).primaryColor),
             decoration: InputDecoration(
+              hintText: "Enter your task here",
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(color: Theme.of(context).disabledColor),
               ),

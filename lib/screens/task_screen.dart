@@ -35,7 +35,7 @@ class _TasksScreenState extends State<TasksScreen> {
         ),
         onPressed: () {
           showModalBottomSheet(
-            isScrollControlled: false,
+            isScrollControlled: true,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(30),
@@ -45,6 +45,7 @@ class _TasksScreenState extends State<TasksScreen> {
             context: context,
             builder: (BuildContext context) => SingleChildScrollView(
               child: Container(
+                height: MediaQuery.of(context).viewInsets.bottom+200,
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: TaskScreen(),
