@@ -26,12 +26,13 @@ class _TasksScreenState extends State<TasksScreen> {
   bool onOff = false;
   @override
   Widget build(BuildContext context) {
+    // var _provider = Provider.of<ThemeProvider>(context, listen: false);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       floatingActionButton: FloatingActionButton(
         child: Icon(
           Icons.add,
-          color : Colors.white,
+          color: Colors.white,
           size: 30,
         ),
         onPressed: () {
@@ -46,7 +47,7 @@ class _TasksScreenState extends State<TasksScreen> {
             context: context,
             builder: (BuildContext context) => SingleChildScrollView(
               child: Container(
-                height: MediaQuery.of(context).viewInsets.bottom+200,
+                height: MediaQuery.of(context).viewInsets.bottom + 200,
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: TaskScreen(),
@@ -90,18 +91,20 @@ class _TasksScreenState extends State<TasksScreen> {
                         Provider.of<ThemeProvider>(context, listen: false);
                     provider.toggleTheme(value);
                     },
-                        ),
+                    ),
                   ),
                   // Switch.adaptive(
                   //   activeThumbImage: AssetImage('images/moon.png'),
                   //   inactiveThumbImage: AssetImage('images/sun.png'),
                   //   activeTrackColor: Colors.indigo[1000],
                   //   inactiveTrackColor: Colors.blue[50],
-                  //   value: Provider.of<ThemeProvider>(context).isDarkMode,
+                  //   value: _provider.isDarkMode,
+                    
                   //   onChanged: (value) {
-                  // final provider =
-                  //     Provider.of<ThemeProvider>(context, listen: false);
-                  // provider.toggleTheme(value);
+                  //     _provider.toggleTheme(value);
+                  //     // final provider =
+                  //     //     Provider.of<ThemeProvider>(context, listen: false);
+                  //     // provider.toggleTheme(value);
                   //   },
                   // ),
                   SizedBox(
@@ -143,7 +146,7 @@ class _TasksScreenState extends State<TasksScreen> {
                 ),
               ),
               child: SingleChildScrollView(
-                  child: Column(
+                child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -151,12 +154,12 @@ class _TasksScreenState extends State<TasksScreen> {
                       height: 7,
                     ),
                     TaskList(
-                        hivebox: Hive.box('todolist')
-                            .values
-                            .where((element) => element.isDone == false)
-                            .map<TaskModel>((e) => e)
-                            .toList(),
-                      ),
+                      hivebox: Hive.box('todolist')
+                          .values
+                          .where((element) => element.isDone == false)
+                          .map<TaskModel>((e) => e)
+                          .toList(),
+                    ),
                     Divider(
                       thickness: 2,
                       indent: 12,
@@ -164,12 +167,12 @@ class _TasksScreenState extends State<TasksScreen> {
                       color: Theme.of(context).disabledColor,
                     ),
                     TaskListDone(
-                        hivebox: Hive.box('todolist')
-                            .values
-                            .where((element) => element.isDone == true)
-                            .map<TaskModel>((e) => e)
-                            .toList(),
-                      ),
+                      hivebox: Hive.box('todolist')
+                          .values
+                          .where((element) => element.isDone == true)
+                          .map<TaskModel>((e) => e)
+                          .toList(),
+                    ),
                   ],
                 ),
               ),
