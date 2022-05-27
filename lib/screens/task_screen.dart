@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:flutter_switch/flutter_switch.dart';
@@ -79,18 +78,18 @@ class _TasksScreenState extends State<TasksScreen> {
                   Container(
                     width: 60,
                     child: FlutterSwitch(
-                    width: 60.0,
-                    height: 30.0,
-                    toggleSize: 20.0,
-                    value: Provider.of<ThemeProvider>(context).isDarkMode,
-                    inactiveToggleColor: Color(0xffE8F258),
-                    activeColor: Color(0xff686767),
-                    inactiveColor: Color(0xff37B7C0),
-                    onToggle: (value) {
+                      width: 60.0,
+                      height: 30.0,
+                      toggleSize: 20.0,
+                      value: Provider.of<ThemeProvider>(context).isDarkMode,
+                      inactiveToggleColor: Color(0xffE8F258),
+                      activeColor: Color(0xff686767),
+                      inactiveColor: Color(0xff37B7C0),
+                      onToggle: (value) {
                         final provider =
-                        Provider.of<ThemeProvider>(context, listen: false);
-                    provider.toggleTheme(value);
-                    },
+                            Provider.of<ThemeProvider>(context, listen: false);
+                        provider.toggleTheme(value);
+                      },
                     ),
                   ),
                   // Switch.adaptive(
@@ -99,7 +98,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   //   activeTrackColor: Colors.indigo[1000],
                   //   inactiveTrackColor: Colors.blue[50],
                   //   value: _provider.isDarkMode,
-                    
+
                   //   onChanged: (value) {
                   //     _provider.toggleTheme(value);
                   //     // final provider =
